@@ -9,7 +9,7 @@ stopped = False
 active_players = []
 
 #my ip at home is '192.168.1.133' at DI its '192.168.201.216' from phone its '192.168.152.27'
-server = '192.168.152.27'
+server = '192.168.1.133'
 port = 5555
 
 socket_handle = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
