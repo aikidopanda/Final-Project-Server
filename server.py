@@ -8,8 +8,9 @@ import random
 stopped = False
 active_players = []
 
-#my ip at home is '192.168.1.133' at DI its '192.168.201.216' from phone its '192.168.152.27'
-server = '192.168.1.133'
+# IP-address of my linode server '170.187.187.119'
+#sudo apt-get install screen and then screen server.py - to run server infinitely
+server = '0.0.0.0'
 port = 5555
 
 socket_handle = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -151,13 +152,11 @@ def threaded_client(connection, player):
 
     while True:
     # while stopped == False:
-        serialized_data = connection.recv(16384)
+        serialized_data = connection.recv(32768)
         try:        
             data = pickle.loads(serialized_data)
         except Exception as e:
             print(e)
-            time.sleep(2)
-            data = pickle.loads(serialized_data)
         if not data or data == 'Stop':
             # stopped = True
             print("Received message from the client:", data)
